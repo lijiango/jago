@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.shoporder.mapper.DepartmentMapper">
+
+    <select id="getDeptById" resultType="com.shop.shoporder.bean.Department">
+        SELECT * FROM department WHERE id=#{id}
+    </select>
+
+    <insert id="insertDept">
+        INSERT INTO department(departmentName) VALUES (#{departmentName})
+    </insert>
+</mapper>
