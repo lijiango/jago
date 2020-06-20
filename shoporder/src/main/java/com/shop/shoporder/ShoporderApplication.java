@@ -6,12 +6,13 @@ import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+//#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 // 该注解表示扫描指定包下所有文件都为mapper
 @MapperScan(value = "com.shop.shoporder.mapper")
 @SpringBootApplication
 @EnableCaching
-@EnableRabbit
+//@EnableRabbitÎ
 
 public class ShoporderApplication {
 

@@ -3,9 +3,7 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/javago?characterEncoding=utf8&useSSL=false
-    driver-class-name: com.mysql.cj.jdbc.Driver
-#     driver-class-name: com.mysql.jdbc.Driver
-
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
     initialSize: 5
