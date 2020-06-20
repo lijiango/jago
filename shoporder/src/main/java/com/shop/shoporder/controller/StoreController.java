@@ -46,18 +46,18 @@ public class StoreController {
     }
 
     @GetMapping("/addStore/{id}")
-    public String addStore(@PathVariable("id") String id,Long val)
+    public Long addStore(@PathVariable("id") String id,Long val)
     {
-        redisStringService.increment(id,val);
-        return "true";
+        Long rt =  redisStringService.increment(id,val);
+        return rt;
     }
 
     
     @GetMapping("/minusStore/{id}")
-    public String minusStore(@PathVariable("id") String id,Long val)
+    public Long minusStore(@PathVariable("id") String id,Long val)
     {
-         redisStringService.decrement(id,val);
-         return "true";
+         Long rt =  redisStringService.decrement(id,val);
+         return rt;
     }
 
 

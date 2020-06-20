@@ -164,8 +164,9 @@ public class RedisStringService {
      *
      * decrement(k key)
      */
-    public void decrement(String key, Long val) {
-        stringRedisTemplate.opsForValue().decrement(key,val);
+    public Long decrement(String key, Long val) {
+        Long rt = stringRedisTemplate.opsForValue().decrement(key,val);
+        return rt;
     }
 
     /**
@@ -173,8 +174,9 @@ public class RedisStringService {
      * 
      * increment(k key)
      */
-    public void increment(String key, Long val) {
-        stringRedisTemplate.opsForValue().increment(key,val);
+    public Long increment(String key, Long val) {
+        Long rt = stringRedisTemplate.opsForValue().increment(key,val);
+        return rt;
     }
 
 
