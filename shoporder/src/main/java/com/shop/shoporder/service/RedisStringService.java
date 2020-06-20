@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import com.shop.shoporder.bean.Department;
+// import com.shop.shoporder.bean.Department;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -157,6 +157,26 @@ public class RedisStringService {
         stringRedisTemplate.opsForValue().increment("test2");
         stringRedisTemplate.opsForValue().increment("test1");
     }
+
+
+    /**
+     * 获取指定key的值进行减1，如果value不是integer类型，会抛异常，如果key不存在会创建一个，默认value为0
+     *
+     * decrement(k key)
+     */
+    public void decrement(String key, Long val) {
+        stringRedisTemplate.opsForValue().decrement(key,val);
+    }
+
+    /**
+     * 获取指定key的值进行加1，如果value不是integer类型，会抛异常，如果key不存在会创建一个，默认value为0
+     * 
+     * increment(k key)
+     */
+    public void increment(String key, Long val) {
+        stringRedisTemplate.opsForValue().increment(key,val);
+    }
+
 
     /**
      * 删除指定key,成功返回true，否则false

@@ -37,13 +37,29 @@ public class StoreController {
         return redisStringService.get(id);
     }
 
-    @GetMapping("/addStore/{id}")
+    @GetMapping("/setStore/{id}")
     public String setStore(@PathVariable("id") String id,String val)
     {
         // Map<String, String[]> params = httpRequest.getParameterMap();
         // String id = params['id'];
         return redisStringService.set(id,val);
     }
+
+    @GetMapping("/addStore/{id}")
+    public String addStore(@PathVariable("id") String id,Long val)
+    {
+        redisStringService.increment(id,val);
+        return "true";
+    }
+
+    
+    @GetMapping("/minusStore/{id}")
+    public String minusStore(@PathVariable("id") String id,Long val)
+    {
+         redisStringService.decrement(id,val);
+         return "true";
+    }
+
 
     // @PostMapping("/minusStore/")
     // public Department minusStore(Department department){
