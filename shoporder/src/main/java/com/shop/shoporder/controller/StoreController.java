@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.alibaba.druid.pool.ValidConnectionChecker;
 // import com.shop.shoporder.bean.Department;
 // import com.shop.shoporder.service.DeptService;
-import com.shop.shoporder.service.RedisStringService;
+import com.shop.shoporder.service.lib.RedisStringService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +34,9 @@ public class StoreController {
     @GetMapping("/getStore/{id}")
     public String getStore(@PathVariable("id") String id)
     {
-        return redisStringService.get(id);
+        String Key = "itemstore:" + id;
+
+        return redisStringService.get(Key);
     }
 
     @GetMapping("/setStore/{id}")
@@ -42,13 +44,17 @@ public class StoreController {
     {
         // Map<String, String[]> params = httpRequest.getParameterMap();
         // String id = params['id'];
-        return redisStringService.set(id,val);
+        String Key = "itemstore:" + id;
+
+        return redisStringService.set(Key,val);
     }
 
     @GetMapping("/addStore/{id}")
     public Long addStore(@PathVariable("id") String id,Long val)
     {
-        Long rt =  redisStringService.increment(id,val);
+        String Key = "itemstore:" + id;
+
+        Long rt =  redisStringService.increment(Key,val);
         return rt;
     }
 
@@ -56,8 +62,14 @@ public class StoreController {
     @GetMapping("/minusStore/{id}")
     public Long minusStore(@PathVariable("id") String id,Long val)
     {
-         Long rt =  redisStringService.decrement(id,val);
-         return rt;
+        String Key = "itemstore:" + id;
+         Long rt =  redisStringService.decrement(Key,val);
+         if(rt >= 0){
+            return rt;
+         }else{
+            redisStringService.increment(Key,val);
+            return rt;
+         }
     }
 
 
