@@ -9,6 +9,6 @@
     </select>
 
     <insert id="insertEmp">
-        INSERT INTO employee(last_name,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
+        INSERT INTO employee(lastName,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
     </insert>
 </mapper>
