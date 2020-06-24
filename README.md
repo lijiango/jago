@@ -1,5 +1,5 @@
-# jago
-# api文档postman
+# jago https://github.com/lijiango/jago/edit/master/README.md 
+# api文档postman [.lj222222]
 https://documenter.getpostman.com/view/6850199/Szzn7wxA?version=latest
 
 # 打包
